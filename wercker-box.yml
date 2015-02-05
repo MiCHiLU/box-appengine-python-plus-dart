@@ -1,0 +1,37 @@
+name: dart
+version: 1.8.5
+inherits: wercker/ubuntu12.04-webessentials@0.0.11
+type: main
+platform: ubuntu@12.04
+description: "A box create to build, test and deploy Dart applications"
+script: |
+    sudo apt-get update -y -qq
+    sudo apt-get install unzip -y -qq
+    
+    cd $HOME
+
+    # Install Dart SDK
+    wget "http://storage.googleapis.com/dart-archive/channels/stable/release/42828/sdk/dartsdk-linux-x64-release.zip"
+    unzip "dartsdk-linux-x64-release.zip"
+    rm "dartsdk-linux-x64-release.zip"
+    
+    # Assert dart_sdk directory
+    test -d $HOME/dart-sdk || { echo "$(ls -a $HOME)" ; echo "dart-sdk directory not found at $HOME/dart_sdk, terminating."; exit 1; }
+
+    # Export variables
+    export DART_SDK="$HOME/dart-sdk"
+    export PATH="$PATH:$DART_SDK/bin"
+
+    # Write environment variables
+    echo "DART_SDK=\"$HOME/dart-sdk\"" | sudo tee -a /etc/environment
+    echo "PATH=\"$PATH\"" | sudo tee -a /etc/environment
+
+    # Assert dart command
+    type dart || { echo "PATH: $PATH"; echo "dart command not availble after installation, terminating."; exit 1; }
+    type pub || { echo "PATH: $PATH"; echo "pub command not availble after installation, terminating."; exit 1; }
+
+    # Link cache directory
+    ln -s "$HOME/.pub-cache" "$WERCKER_CACHE_DIR/.pub-cache"
+
+    # Print version
+    dart --version
