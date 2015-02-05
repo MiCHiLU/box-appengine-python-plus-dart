@@ -1,9 +1,9 @@
-name: dart
-version: 1.8.5
-inherits: wercker/ubuntu12.04-webessentials@0.0.11
+name: appengine-python-plus-dart
+version: 1.9.17-1.8.5
+inherits: michilu/appengine-python@1.9.17-1
 type: main
 platform: ubuntu@12.04
-description: "A box create to build, test and deploy Dart applications"
+description: "wercker box for Google App Engine for Python with environments of building Dart."
 script: |
     sudo apt-get update -y -qq
     sudo apt-get install unzip -y -qq
