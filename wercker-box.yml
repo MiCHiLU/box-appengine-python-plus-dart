@@ -7,14 +7,14 @@ description: "wercker box for Google App Engine for Python with environments of 
 script: |
     sudo apt-get update -y -qq
     sudo apt-get install unzip -y -qq
-    
+
     cd $HOME
 
     # Install Dart SDK
     wget "http://storage.googleapis.com/dart-archive/channels/stable/release/1.12.1/sdk/dartsdk-linux-x64-release.zip"
     unzip "dartsdk-linux-x64-release.zip"
     rm "dartsdk-linux-x64-release.zip"
-    
+
     # Assert dart_sdk directory
     test -d $HOME/dart-sdk || { echo "$(ls -a $HOME)" ; echo "dart-sdk directory not found at $HOME/dart_sdk, terminating."; exit 1; }
 
