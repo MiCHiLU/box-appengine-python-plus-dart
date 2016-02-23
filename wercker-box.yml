@@ -1,6 +1,6 @@
 name: appengine-python-plus-dart
-version: 1.9.32-1.14.2
-inherits: michilu/appengine-python@1.9.32
+version: 1.9.33-1.14.2
+inherits: michilu/appengine-python@1.9.33
 type: main
 platform: ubuntu@12.04
 description: "wercker box for Google App Engine for Python with environments of building Dart."
