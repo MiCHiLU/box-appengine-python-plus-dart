@@ -1,5 +1,5 @@
 name: appengine-python-plus-dart
-version: 1.9.64-1.24.2
+version: 1.9.64-1.24.3
 inherits: michilu/appengine-python@1.9.64
 type: main
 platform: ubuntu@12.04
@@ -11,7 +11,7 @@ script: |
     cd $HOME
 
     # Install Dart SDK
-    wget "http://storage.googleapis.com/dart-archive/channels/stable/release/1.24.2/sdk/dartsdk-linux-x64-release.zip"
+    wget "http://storage.googleapis.com/dart-archive/channels/stable/release/1.24.3/sdk/dartsdk-linux-x64-release.zip"
     unzip "dartsdk-linux-x64-release.zip"
     rm "dartsdk-linux-x64-release.zip"
 
